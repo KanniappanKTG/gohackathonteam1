@@ -1,0 +1,19 @@
+---
+version: "3.3"
+services:
+  db:
+    image: dockerdeepak/workshop:pgdb_v1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    container_name: db
+  developer:
+    image: gokitgorm:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 8084:8084
+    container_name: goapp
